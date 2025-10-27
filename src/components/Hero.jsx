@@ -1,9 +1,11 @@
 "use client";
 import { motion } from "framer-motion";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function Hero() {
   const [activeIndex, setActiveIndex] = useState(null);
+  const navigate = useNavigate();
 
   const projects = [
     { id: "001", title: "FERTILE AGENCY", img: "https://images.unsplash.com/photo-1760915170483-3e943d42f29a?auto=format&fit=crop&q=80&w=687" },
@@ -42,6 +44,7 @@ export default function Hero() {
               key={p.id}
               onMouseEnter={() => setActiveIndex(idx)}
               onMouseLeave={() => setActiveIndex(null)}
+              onClick={() => navigate(`/project/${p.id}`, { state: p })}
               className={`flex gap-4 text-[0.7rem] font-bold cursor-pointer transition
                 ${activeIndex === idx ? "opacity-100" : "opacity-60"}`}
             >
@@ -81,6 +84,7 @@ export default function Hero() {
       transition={{ duration: 0.35 }}
       onMouseEnter={() => setActiveIndex(idx)}
       onMouseLeave={() => setActiveIndex(null)}
+      onClick={() => navigate(`/project/${item.id}`, { state: item })}
       style={{
         backgroundImage: `url(${item.img})`,
         backgroundSize: "cover",
