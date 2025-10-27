@@ -31,11 +31,11 @@ export default function Hero() {
   };
 
   return (
-    <div className="w-full h-[80vh] px-10 py-20 flex flex-col lg:flex-row justify-between gap-12">
+    <div className="w-full min-h-[75vh] px-4 sm:px-6 lg:px-10 py-10 sm:py-16 lg:py-20 flex flex-col lg:flex-row justify-between gap-8 lg:gap-12">
 
       {/* Left list */}
-      <div className="uppercase text-xs tracking-wider w-[65%]">
-        <p className="mb-6 flex items-center gap-2">
+      <div className="uppercase text-xs tracking-wider w-full lg:w-[65%] mb-8 lg:mb-0">
+        <p className="mb-4 sm:mb-6 flex items-center gap-2">
           Projects <span className="rotate-90 text-xs">➜</span>
         </p>
         <ul className="space-y-0">
@@ -45,11 +45,11 @@ export default function Hero() {
               onMouseEnter={() => setActiveIndex(idx)}
               onMouseLeave={() => setActiveIndex(null)}
               onClick={() => navigate(`/project/${p.id}`, { state: p })}
-              className={`flex gap-4 text-[0.7rem] font-bold cursor-pointer transition
+              className={`flex gap-2 sm:gap-4 text-[0.6rem] sm:text-[0.7rem] font-bold cursor-pointer transition py-1 touch-manipulation
                 ${activeIndex === idx ? "opacity-100" : "opacity-60"}`}
             >
-              <span className="w-10">{p.id}</span>
-              <span>{p.title}</span>
+              <span className="w-8 sm:w-10">{p.id}</span>
+              <span className="truncate">{p.title}</span>
             </li>
           ))}
         </ul>
@@ -62,7 +62,7 @@ export default function Hero() {
         animate="show"
         className="w-full flex"
       >
-        <div className="flex flex-col gap-6 w-full -translate-x-20">
+        <div className="flex flex-col sm:flex-row lg:flex-col gap-4 sm:gap-6 w-full lg:-translate-x-20">
          {projects.map((item, idx) => {
   const isActive = activeIndex === idx;
   return (
@@ -91,7 +91,7 @@ export default function Hero() {
         backgroundSize: "cover",
         backgroundPosition: "center",
       }}
-      className="w-1/2 h-[200px] bg-gray-300 rounded-xs shadow-md cursor-pointer"
+      className="w-full sm:w-1/2 lg:w-1/2 h-[150px] sm:h-[180px] lg:h-[80px] bg-gray-300 rounded-xs shadow-md cursor-pointer touch-manipulation"
     />
   );
 })}

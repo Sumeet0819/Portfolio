@@ -18,11 +18,11 @@ export default function About() {
   }, []);
 
   return (
-    <section className="w-full bg-white text-black px-10 py-12 flex flex-col justify-between">
+    <section className="w-full bg-white text-black px-4 sm:px-6 lg:px-10 py-8 sm:py-12 flex flex-col justify-between h-[75vh]">
       
       {/* Header */}
       <div>
-        <div className="flex justify-between items-center uppercase font-bold text-[4rem] leading-none">
+        <div className="flex justify-between items-center uppercase font-bold text-[2rem] sm:text-[3rem] lg:text-[4rem] leading-none">
 
           {/* Animated Title */}
           <motion.h1
@@ -37,23 +37,23 @@ export default function About() {
           {/* Close button */}
           <motion.button
             onClick={() => navigate("/")}
-            className="flex items-center gap-6 text-[0.8rem] font-medium cursor-pointer"
+            className="flex items-center gap-3 sm:gap-6 text-[0.7rem] sm:text-[0.8rem] font-medium cursor-pointer touch-manipulation"
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.15, duration: 0.6, ease: "easeOut" }}
             whileHover={{ scale: 1.08 }}
             whileTap={{ scale: 0.9 }}
           >
-            <span className="w-20 h-[1px] bg-black inline-block" />
+            <span className="w-12 sm:w-20 h-[1px] bg-black inline-block" />
             <span>x</span>
-            <span>Close</span>
+            <span className="hidden sm:inline">Close</span>
           </motion.button>
 
         </div>
 
         {/* Bio text */}
         <motion.p
-          className="mt-10 max-w-3xl text-[0.75rem] leading-relaxed tracking-tight"
+          className="mt-6 sm:mt-10 max-w-3xl text-[0.65rem] sm:text-[0.75rem] leading-relaxed tracking-tight"
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3, duration: 0.55, ease: "easeOut" }}
@@ -71,7 +71,7 @@ export default function About() {
         </motion.p>
 
         {/* Grid Section */}
-        <div className="grid grid-cols-3 gap-20 mt-16 uppercase text-[0.6rem] tracking-widest">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-12 lg:gap-20 mt-12 sm:mt-16 uppercase text-[0.55rem] sm:text-[0.6rem] tracking-widest">
           
           {/* Reusable motion props */}
           {[
@@ -149,7 +149,7 @@ export default function About() {
         transition={{ delay: 0.85, duration: 0.65, ease: "easeOut" }}
       >
         <motion.span
-          className="text-[6rem] font-black leading-none"
+          className="text-[4rem] sm:text-[5rem] lg:text-[6rem] font-black leading-none"
           whileHover={{ rotate: -15, scale: 1.15, transition: { duration: 0.3 } }}
         >
           *

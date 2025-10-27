@@ -14,7 +14,7 @@ function PageWrapper({ children }) {
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -12 }}
       transition={{ duration: 0.28, ease: "easeOut" }}
-      style={{ minHeight: "calc(100vh - 120px)" }}
+      className="flex-1"
     >
       {children}
     </motion.div>
