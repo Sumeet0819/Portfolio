@@ -68,6 +68,7 @@ export default function Hero() {
   return (
     <motion.div
       key={item.id}
+      layoutId={`project-image-${item.id}`}
       variants={cardVariants}
       animate={{
         filter: isActive ? "grayscale(0%)" : "grayscale(100%)",
@@ -81,7 +82,7 @@ export default function Hero() {
         opacity: 1,
         zIndex: 20,
       }}
-      transition={{ duration: 0.35 }}
+      transition={{ duration: 0.35, layout: { duration: 0.55, ease: [0.22, 1, 0.36, 1] } }}
       onMouseEnter={() => setActiveIndex(idx)}
       onMouseLeave={() => setActiveIndex(null)}
       onClick={() => navigate(`/project/${item.id}`, { state: item })}

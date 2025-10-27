@@ -62,7 +62,9 @@ export default function ProjectView() {
         </div>
 
         <motion.div
+          layoutId={`project-image-${project.id}`}
           whileHover={{ scale: 1.02 }}
+          transition={{ layout: { duration: 0.55, ease: [0.22, 1, 0.36, 1] } }}
           className="w-[35vw] h-[20vw] rounded-md bg-cover bg-center"
           style={{ backgroundImage: `url(${project.img})` }}
         />
