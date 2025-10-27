@@ -9,13 +9,13 @@ const underlineVariants = {
 
 export default function NavBar() {
   return (
-    <nav className="w-full h-[10vh] flex items-start px-6 py-5 mb-[2rem]">
+    <nav className="w-full h-[10vh] flex items-start px-4 sm:px-6 py-3 sm:py-5 mb-[1rem] sm:mb-[2rem]">
       <div className="flex flex-col">
-        <span className="text-5xl font-semibold leading-tight uppercase">Sumeet</span>
-        <span className="text-5xl font-semibold leading-tight uppercase">Tokare</span>
+        <span className="text-3xl sm:text-4xl lg:text-5xl font-semibold leading-tight uppercase">Sumeet</span>
+        <span className="text-3xl sm:text-4xl lg:text-5xl font-semibold leading-tight uppercase">Tokare</span>
       </div>
 
-      <div className="flex-1 flex flex-col items-end space-y-2 uppercase font-bold text-[0.7rem]">
+      <div className="flex-1 flex flex-col items-end space-y-1 sm:space-y-2 uppercase font-bold text-[0.6rem] sm:text-[0.7rem]">
         
         {/* Resume Download: Kept as <a> */}
         <motion.a
@@ -24,7 +24,8 @@ export default function NavBar() {
           initial="initial"
           whileHover="hover"
         >
-          <span>Download Resume</span>
+          <span className="hidden sm:inline">Download Resume</span>
+          <span className="sm:hidden">Resume</span>
           <motion.span
             className="absolute left-0 -bottom-1 h-[2px] bg-black w-full"
             variants={underlineVariants}
@@ -39,7 +40,8 @@ export default function NavBar() {
           initial="initial"
           whileHover="hover"
         >
-          <span>sumeettokre19@gmail.com</span>
+          <span className="hidden sm:inline">sumeettokre19@gmail.com</span>
+          <span className="sm:hidden">Email</span>
           <motion.span
             className="absolute left-0 -bottom-1 h-[2px] bg-black w-full"
             variants={underlineVariants}

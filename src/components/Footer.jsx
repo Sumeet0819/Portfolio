@@ -21,7 +21,7 @@ export default function Footer() {
   }, []);
 
   return (
-    <footer className="w-full  px-10 uppercase text-[0.7rem] tracking-widest flex justify-between items-center">
+    <footer className="w-full px-4 sm:px-6 lg:px-10 py-4 uppercase text-[0.6rem] sm:text-[0.7rem] tracking-widest flex flex-col sm:flex-row justify-between items-center gap-2 sm:gap-0">
       <div className="font-bold">{time}</div>
       <div className="font-bold">Frontend Dev</div>
     </footer>

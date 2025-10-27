@@ -16,37 +16,37 @@ export default function ProjectView() {
   }
 
   return (
-    <section className="w-full min-h-screen px-16 py-5 flex flex-col items-center gap-20">
+    <section className="w-full min-h-screen px-4 sm:px-8 lg:px-16 py-5 flex flex-col items-center gap-12 sm:gap-16 lg:gap-20">
 
-      <div className="w-full flex justify-between items-start">
+      <div className="w-full flex flex-col sm:flex-row justify-between items-start gap-4 sm:gap-0">
         <div className="flex flex-col gap-2">
-          <h1 className="text-[5vw] font-bold tracking-tight text-[#B8A8A3] leading-[0.9]">
+          <h1 className="text-[8vw] sm:text-[6vw] lg:text-[5vw] font-bold tracking-tight text-[#B8A8A3] leading-[0.9]">
             {project.title.split(" ")[0]}
             <br />
             {project.title.split(" ")[1] || ""}
           </h1>
         </div>
 
-        <p className="text-[4vw] font-semibold text-[#B8A8A3]">
+        <p className="text-[6vw] sm:text-[4vw] font-semibold text-[#B8A8A3]">
           {project.id}
         </p>
       </div>
 
-      <div className="w-full flex justify-between">
+      <div className="w-full flex flex-col lg:flex-row justify-between gap-8 lg:gap-0">
         
-        <div className="flex flex-col gap-8 text-[0.75rem] tracking-wide font-semibold">
+        <div className="flex flex-col gap-6 sm:gap-8 text-[0.65rem] sm:text-[0.75rem] tracking-wide font-semibold">
 
-          <div className="flex gap-4">
-            <span className="opacity-40 w-10">{project.id}</span>
-            <span>{project.title}</span>
+          <div className="flex gap-2 sm:gap-4">
+            <span className="opacity-40 w-8 sm:w-10">{project.id}</span>
+            <span className="truncate">{project.title}</span>
           </div>
 
-          <div className="space-y-3 uppercase text-[0.65rem]">
+          <div className="space-y-2 sm:space-y-3 uppercase text-[0.55rem] sm:text-[0.65rem]">
             <Info label="Type" value={project.type} />
             <Info label="Date" value={project.date} />
             <Info label="Role" value={project.role} />
 
-            <p className="w-[280px] normal-case leading-relaxed font-normal pt-4">
+            <p className="w-full sm:w-[280px] normal-case leading-relaxed font-normal pt-4">
               {project.description}
             </p>
 
@@ -65,21 +65,21 @@ export default function ProjectView() {
           layoutId={`project-image-${project.id}`}
           whileHover={{ scale: 1.02 }}
           transition={{ layout: { duration: 0.55, ease: [0.22, 1, 0.36, 1] } }}
-          className="w-[35vw] h-[20vw] rounded-md bg-cover bg-center"
+          className="w-full sm:w-[50vw] lg:w-[35vw] h-[40vw] sm:h-[30vw] lg:h-[20vw] rounded-md bg-cover bg-center"
           style={{ backgroundImage: `url(${project.img})` }}
         />
 
-        <div className="flex flex-col justify-between items-end text-[0.75rem]">
-          <button className="flex items-center gap-3">
+        <div className="flex flex-row sm:flex-col justify-between sm:justify-between items-end text-[0.65rem] sm:text-[0.75rem] gap-4 sm:gap-0">
+          <button className="flex items-center gap-2 sm:gap-3">
             OPEN
-            <div className="w-12 h-[1px] bg-black" />
+            <div className="w-8 sm:w-12 h-[1px] bg-black" />
           </button>
           <button
-            className="flex items-center gap-3"
+            className="flex items-center gap-2 sm:gap-3"
             onClick={() => window.open(project?.liveUrl, "_blank")}
           >
             VISIT LIVE ↗
-            <div className="w-12 h-[1px] bg-black" />
+            <div className="w-8 sm:w-12 h-[1px] bg-black" />
           </button>
         </div>
       </div>
