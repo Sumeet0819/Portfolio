@@ -1,6 +1,83 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
+import { useGSAP } from '@gsap/react'
+import gsap from 'gsap'
+import ProjectCard from './ProjectCard'
 
 const Hero = () => {
+  const [hoveredCard, setHoveredCard] = useState(null)
+  const [currentTime, setCurrentTime] = useState('')
+  const nameRef = useRef(null)
+  const infoRef = useRef(null)
+  const gridRef = useRef(null)
+
+  // Update time every second
+  useEffect(() => {
+    const updateTime = () => {
+      const now = new Date()
+      const timeString = now.toLocaleTimeString('en-US', { 
+        hour: '2-digit', 
+        minute: '2-digit',
+        hour12: false 
+      })
+      setCurrentTime(timeString)
+    }
+    
+    updateTime()
+    const interval = setInterval(updateTime, 1000)
+    
+    return () => clearInterval(interval)
+  }, [])
+
+  // Entrance animations - timeline
+  useGSAP(() => {
+    const words = nameRef.current.querySelectorAll('.word')
+    const projectCards = gridRef.current.children
+    
+    // Set initial states - hide everything
+    gsap.set(words, {
+      opacity: 0,
+      y: 100
+    })
+    
+    gsap.set(infoRef.current, {
+      opacity: 0,
+      y: 60
+    })
+
+    gsap.fromTo(projectCards, 
+      {
+        opacity: 0,
+        y: 400
+      },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 1,
+        delay: 1.5,
+        stagger: 0.2,
+        ease: 'power3.out'
+      }
+    )
+    
+    const tl = gsap.timeline({ defaults: { ease: 'power3.out' } })
+    
+    // Animate name words with stagger
+    tl.to(words, {
+      opacity: 1,
+      y: 0,
+      duration: 1,
+      stagger: 0.2,
+      delay: 2.5  // 2s delay + 0.5s original delay
+    })
+    
+    // Animate info panel from bottom
+    .to(infoRef.current, {
+      opacity: 1,
+      y: 0,
+      duration: 0.8
+    }, '-=0.4')
+  }, [])
+
   const projects = [
     {
       id: 1,
@@ -39,54 +116,57 @@ const Hero = () => {
       {/* Hero Content */}
       <div className="flex-1">
         {/* Top Section with Name and Labels */}
-        <div className="flex items-start justify-between mb-32 md:mb-54">
+        <div className="flex items-end justify-between mb-32 md:mb-35">
           {/* Large Name */}
-          <div className="flex-1">
+          <div className="flex-1" ref={nameRef} style={{ perspective: '1000px' }}>
             <h1 
               className="font-regular leading-[0.85] tracking-tight"
               style={{ fontSize: 'clamp(3.5rem, 12vw, 9rem)' }}
             >
-              SUMEET<br />
-              TOKARE
+              <span className="word inline-block">SUMEET</span><br />
+              <span className="word inline-block">TOKARE</span>
             </h1>
+          </div>
+
+          {/* Right Side Info */}
+          <div className="flex flex-row items-end justify-end gap-4 text-right" ref={infoRef}>
+            {/* Role */}
+            <div 
+              className="text-white/60 font-light tracking-[0.3em] uppercase"
+              style={{ fontSize: 'clamp(0.6rem, calc((0.7 - (0.6 - 0.7) / (90 - 20) * 20) * 1rem + (0.6 - 0.7) / (90 - 20) * 100vw), 0.7rem)' }}
+            >
+               <span className='text-red-500'>[ </span>Frontend Developer <span className='text-red-500'>]</span>
+            </div>
+            
+            {/* Time & Timezone */}
+            <div className="flex flex-col items-end gap-1">
+              <div 
+                className="text-white font-light tracking-wider"
+                style={{ fontSize: 'clamp(0.6rem, calc((0.7 - (0.6 - 0.7) / (90 - 20) * 20) * 1rem + (0.6 - 0.7) / (90 - 20) * 100vw), 0.7rem)' }}
+              >
+                {currentTime}
+              </div>
+              <div 
+                className="text-white/40 font-light tracking-[0.2em] uppercase"
+                style={{ fontSize: 'clamp(0.6rem, calc((0.7 - (0.6 - 0.7) / (90 - 20) * 20) * 1rem + (0.6 - 0.7) / (90 - 20) * 100vw), 0.7rem)' }}
+              >
+                IST (GMT+5:30)
+              </div>
+            </div>
           </div>
         </div>
 
         {/* Project Showcase Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-5">
-          {projects.map((project, index) => (
-            <div
-              key={project.id}
-              className="group relative h-50 md:h-50 lg:h-50 rounded-sm overflow-hidden cursor-pointer bg-zinc-900 transition-all duration-400"
-            >
-              {/* Project Image */}
-              <div className="absolute inset-0">
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  className="w-full h-full object-cover transition-all duration-500 group-hover:scale-105"
-                  style={{ filter: 'brightness(0.85)' }}
-                />
-              </div>
-
-              {/* Subtle Overlay */}
-              <div className="absolute inset-0 bg-black/30 group-hover:bg-black/10 transition-all duration-400"></div>
-
-              {/* Project Info - Always Visible */}
-              <div className="absolute inset-0 p-4 md:p-5 flex flex-col justify-end">
-                <div className="transform transition-all duration-400 group-hover:translate-y-0">
-                  <h3 className="text-white text-sm md:text-base font-normal tracking-wide mb-1">
-                    {project.title}
-                  </h3>
-                  <p className="text-white/50 text-[0.7rem] md:text-xs font-light tracking-wider uppercase">
-                    {project.category}
-                  </p>
-                </div>
-              </div>
-
-              {/* Hover Border Effect */}
-              <div className="absolute inset-0 border border-white/0 group-hover:border-white/20 transition-all duration-400"></div>
-            </div>
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-5 overflow-hidden" ref={gridRef}>
+          {projects.map((project) => (
+            <ProjectCard 
+              key={project.id} 
+              project={project}
+              isHovered={hoveredCard === project.id}
+              isOtherHovered={hoveredCard !== null && hoveredCard !== project.id}
+              onHover={() => setHoveredCard(project.id)}
+              onLeave={() => setHoveredCard(null)}
+            />
           ))}
         </div>
       </div>
