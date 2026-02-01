@@ -1,67 +1,136 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
+import { Link } from 'react-router-dom'
+import { useGSAP } from '@gsap/react'
+import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+
+// Register ScrollTrigger plugin
+gsap.registerPlugin(ScrollTrigger)
 
 const NavBar = () => {
-  const [scrolled, setScrolled] = useState(false)
+  const navRef = useRef(null)
+  const brandRef = useRef(null)
+  const centerNavRef = useRef(null)
+  const rightNavRef = useRef(null)
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 20)
-    }
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
+  // Initial entrance animation
+  useGSAP(() => {
+    const tl = gsap.timeline({ defaults: { ease: 'power3.out' } })
+    
+    // Animate brand
+    tl.from(brandRef.current, {
+      opacity: 0,
+      y: -20,
+      duration: 0.8,
+      clearProps: 'all'
+    })
+    
+    // Animate center nav
+    tl.from(centerNavRef.current, {
+      opacity: 0,
+      y: -20,
+      duration: 0.8,
+      clearProps: 'all'
+    }, '-=0.6')
+    
+    // Animate right nav items (same as brand)
+    tl.from(rightNavRef.current, {
+      opacity: 0,
+      y: -20,
+      duration: 0.8,
+      clearProps: 'all'
+    }, '-=0.6')
+  }, [])
+
+  // Scroll-triggered animations for nav items
+  useGSAP(() => {
+    const navItems = navRef.current.querySelectorAll('.nav-item')
+    
+    navItems.forEach((item) => {
+      gsap.to(item, {
+        scrollTrigger: {
+          trigger: document.body,
+          start: 'top top-=20',
+          end: 'top top-=21',
+          toggleActions: 'play none none reverse',
+          onEnter: () => {
+            gsap.to(item, {
+              backdropFilter: 'blur(12px)',
+              backgroundColor: 'rgba(255, 255, 255, 0.05)',
+              borderColor: 'rgba(255, 255, 255, 0.1)',
+              duration: 0.5,
+              ease: 'power2.out'
+            })
+          },
+          onLeaveBack: () => {
+            gsap.to(item, {
+              backdropFilter: 'blur(0px)',
+              backgroundColor: 'rgba(255, 255, 255, 0)',
+              borderColor: 'rgba(255, 255, 255, 0)',
+              duration: 0.5,
+              ease: 'power2.out'
+            })
+          }
+        }
+      })
+    })
   }, [])
 
   return (
     <nav 
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        scrolled 
-          ? 'bg-black/80 backdrop-blur-xl border-b border-white/5' 
-          : 'bg-transparent'
-      }`}
+      ref={navRef}
+      className="fixed top-0 left-0 right-0 z-50 transition-all duration-500"
     >
-      <div className="max-w-[1400px]  px-6 md:px-12">
+      <div className="max-w-[1400px] px-6 md:px-12">
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo / Brand */}
-          <div className="flex-1">
-            <a 
-              href="#" 
-              className="text-white font-light tracking-[0.2em] uppercase hover:text-white/70 transition-colors duration-300"
-              style={{ fontSize: 'clamp(0.7rem, calc((0.8 - (0.7 - 0.8) / (90 - 20) * 20) * 1rem + (0.7 - 0.8) / (90 - 20) * 100vw), 0.8rem)' }}
+          <div className="flex-1 flex items-center gap-3" ref={brandRef}>
+            <Link 
+              to="/" 
+              className="nav-item text-white font-light tracking-[0.2em] uppercase hover:text-white/70 hover:backdrop-blur-md hover:bg-white/5 hover:border-white/10 transition-all duration-500 px-4 py-2 inline-flex items-center gap-2 border border-transparent rounded-full"
+              style={{ fontSize: 'clamp(0.6rem, calc((0.7 - (0.6 - 0.7) / (90 - 20) * 20) * 1rem + (0.6 - 0.7) / (90 - 20) * 100vw), 0.7rem)' }}
             >
-             Sumeet Tokare
-            </a>
+              <img src="/favicon.ico" alt="Logo" className="w-4 h-4" />
+              Sumeet Tokare
+              <div className="relative flex items-center gap-2">
+                <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+              </div>
+            </Link>
           </div>
 
           {/* Center Navigation */}
-          <div className="flex-1 flex justify-center">
+          <div className="flex-1 flex justify-center" ref={centerNavRef}>
             <a 
               href="#work" 
-              className="relative text-white font-light tracking-[0.15em] uppercase group"
-              style={{ fontSize: 'clamp(0.7rem, calc((0.8 - (0.7 - 0.8) / (90 - 20) * 20) * 1rem + (0.7 - 0.8) / (90 - 20) * 100vw), 0.8rem)' }}
+              className="nav-item relative text-white font-light tracking-[0.15em] uppercase group px-4 py-2 hover:backdrop-blur-md hover:bg-white/5 hover:border-white/10 transition-all duration-500 border border-transparent rounded-full"
+              style={{ fontSize: 'clamp(0.6rem, calc((0.7 - (0.6 - 0.7) / (90 - 20) * 20) * 1rem + (0.6 - 0.7) / (90 - 20) * 100vw), 0.7rem)' }}
             >
               <span className="relative z-10">Work</span>
-              <span className="absolute inset-0 bg-white/10 rounded-full scale-0 group-hover:scale-100 transition-transform duration-300 -z-0"></span>
-              <span className="absolute bottom-0 left-0 w-0 h-[1px] bg-white group-hover:w-full transition-all duration-500"></span>
             </a>
           </div>
 
           {/* Right Navigation */}
-          <div className="flex-1 flex justify-end items-center gap-6 md:gap-10">
+          <div className="flex-1 flex justify-end items-center gap-3 md:gap-4" ref={rightNavRef}>
+            <Link 
+              to="/about" 
+              className="nav-item relative text-white font-light tracking-[0.15em] uppercase group px-4 py-2 hover:backdrop-blur-md hover:bg-white/5 hover:border-white/10 transition-all duration-500 border border-transparent rounded-full"
+              style={{ fontSize: 'clamp(0.6rem, calc((0.7 - (0.6 - 0.7) / (90 - 20) * 20) * 1rem + (0.6 - 0.7) / (90 - 20) * 100vw), 0.7rem)' }}
+            >
+              <span className="relative z-10">About</span>
+            </Link>
             <a 
               href="#feed" 
-              className="relative text-white font-light tracking-[0.15em] uppercase group"
-              style={{ fontSize: 'clamp(0.7rem, calc((0.8 - (0.7 - 0.8) / (90 - 20) * 20) * 1rem + (0.7 - 0.8) / (90 - 20) * 100vw), 0.8rem)' }}
+              className="nav-item relative text-white font-light tracking-[0.15em] uppercase group px-4 py-2 hover:backdrop-blur-md hover:bg-white/5 hover:border-white/10 transition-all duration-500 border border-transparent rounded-full"
+              style={{ fontSize: 'clamp(0.6rem, calc((0.7 - (0.6 - 0.7) / (90 - 20) * 20) * 1rem + (0.6 - 0.7) / (90 - 20) * 100vw), 0.7rem)' }}
             >
               <span className="relative z-10">Feed</span>
-              <span className="absolute bottom-0 left-0 w-0 h-[1px] bg-white group-hover:w-full transition-all duration-500"></span>
             </a>
             <a 
               href="#archive" 
-              className="relative text-white font-light tracking-[0.15em] uppercase group"
-              style={{ fontSize: 'clamp(0.7rem, calc((0.8 - (0.7 - 0.8) / (90 - 20) * 20) * 1rem + (0.7 - 0.8) / (90 - 20) * 100vw), 0.8rem)' }}
+              className="nav-item relative text-white font-light tracking-[0.15em] uppercase group px-4 py-2 hover:backdrop-blur-md hover:bg-white/5 hover:border-white/10 transition-all duration-500 border border-transparent rounded-full"
+              style={{ fontSize: 'clamp(0.6rem, calc((0.7 - (0.6 - 0.7) / (90 - 20) * 20) * 1rem + (0.6 - 0.7) / (90 - 20) * 100vw), 0.7rem)' }}
             >
               <span className="relative z-10">Archive</span>
-              <span className="absolute bottom-0 left-0 w-0 h-[1px] bg-white group-hover:w-full transition-all duration-500"></span>
             </a>
           </div>
         </div>

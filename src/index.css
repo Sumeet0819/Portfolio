@@ -12,20 +12,30 @@ html {
     scroll-behavior: smooth;
 }
 
-/* Custom scrollbar */
+/* Custom scrollbar - Hidden */
 ::-webkit-scrollbar {
-    width: 8px;
+    width: 0px;
+    height: 0px;
 }
 
 ::-webkit-scrollbar-track {
-    background: #0A0A0A;
+    background: transparent;
 }
 
 ::-webkit-scrollbar-thumb {
-    background: #333;
-    border-radius: 4px;
+    background: transparent;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: #555;
+    background: transparent;
+}
+
+/* Hide scrollbar for Firefox */
+* {
+    scrollbar-width: none;
+}
+
+/* Hide scrollbar for IE and Edge */
+* {
+    -ms-overflow-style: none;
 }

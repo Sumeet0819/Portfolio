@@ -37,9 +37,9 @@ const Hero = () => {
   return (
     <div className="min-h-screen text-white pt-32 pb-16 px-6 md:px-12" style={{ backgroundColor: '#0A0A0A' }}>
       {/* Hero Content */}
-      <div className="flex-1 mt-20">
+      <div className="flex-1">
         {/* Top Section with Name and Labels */}
-        <div className="flex items-start justify-between mb-32 md:mb-40">
+        <div className="flex items-start justify-between mb-32 md:mb-54">
           {/* Large Name */}
           <div className="flex-1">
             <h1 
@@ -57,7 +57,7 @@ const Hero = () => {
           {projects.map((project, index) => (
             <div
               key={project.id}
-              className="group relative h-56 md:h-64 lg:h-72 rounded-sm overflow-hidden cursor-pointer bg-zinc-900 transition-all duration-400"
+              className="group relative h-50 md:h-50 lg:h-50 rounded-sm overflow-hidden cursor-pointer bg-zinc-900 transition-all duration-400"
             >
               {/* Project Image */}
               <div className="absolute inset-0">
