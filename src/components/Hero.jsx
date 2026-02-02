@@ -116,11 +116,11 @@ const Hero = () => {
       {/* Hero Content */}
       <div className="flex-1">
         {/* Top Section with Name and Labels */}
-        <div className="flex items-end justify-between mb-32 md:mb-35">
+        <div className="flex items-end justify-between mb-32 md:mb-45 lg:mb-50">
           {/* Large Name */}
           <div className="flex-1" ref={nameRef} style={{ perspective: '1000px' }}>
             <h1 
-              className="font-regular leading-[0.85] tracking-tight"
+              className="font-regular leading-[0.85] tracking-tight overflow-hidden"
               style={{ fontSize: 'clamp(3.5rem, 12vw, 9rem)' }}
             >
               <span className="word inline-block">SUMEET</span><br />
