@@ -21,7 +21,7 @@ export default function About() {
       
       {/* Header */}
       <div>
-        <div className="flex justify-between items-center uppercase font-bold text-[4rem] leading-none">
+        <div className="flex justify-between items-center uppercase font-bold text-5xl md:text-6xl lg:text-[4rem] leading-none">
 
           {/* Title */}
           <h1 className="hover:scale-105 transition-transform duration-300">
@@ -31,9 +31,9 @@ export default function About() {
           {/* Close button */}
           <button
             onClick={() => navigate("/")}
-            className="flex items-center gap-6 text-[0.8rem] font-medium cursor-pointer hover:scale-105 active:scale-90 transition-transform"
+            className="flex items-center gap-3 md:gap-6 text-[0.7rem] md:text-[0.8rem] font-medium cursor-pointer hover:scale-105 active:scale-90 transition-transform"
           >
-            <span className="w-20 h-[1px] bg-black dark:bg-white inline-block" />
+            <span className="w-12 md:w-20 h-[1px] bg-black dark:bg-white inline-block" />
             <span>x</span>
             <span>Close</span>
           </button>
@@ -41,7 +41,7 @@ export default function About() {
         </div>
 
         {/* Bio text */}
-        <p className="mt-10 max-w-3xl text-[0.75rem] leading-relaxed tracking-tight hover:-translate-y-1 transition-transform duration-250">
+        <p className="mt-8 md:mt-10 max-w-3xl text-[0.7rem] md:text-[0.75rem] leading-relaxed tracking-tight hover:-translate-y-1 transition-transform duration-250">
           I'M SUMEET TOKARE, A FRONTEND DEVELOPER BASED IN INDIA. I BUILD
           SMOOTH, MOTION-FIRST WEBSITES WITH A STRONG FOCUS ON USER EXPERIENCE,
           VISUAL DETAIL, AND RESPONSIVE SYSTEMS. FROM DESIGN-DRIVEN UI TO FAST
@@ -50,7 +50,7 @@ export default function About() {
         </p>
 
         {/* Grid Section */}
-        <div className="grid grid-cols-3 gap-20 mt-16 uppercase text-[0.6rem] tracking-widest">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 md:gap-12 lg:gap-20 mt-12 md:mt-16 uppercase text-[0.6rem] tracking-widest">
           
           {/* Location */}
           <div className="cursor-default hover:-translate-y-1.5 hover:scale-[1.02] transition-all duration-300">
@@ -93,7 +93,7 @@ export default function About() {
 
       {/* Bottom Giant Symbol */}
       <div className="flex justify-between items-end w-full">
-        <span className="text-[6rem] font-black leading-none hover:rotate-[-15deg] hover:scale-115 transition-all duration-300">
+        <span className="text-[4rem] md:text-[5rem] lg:text-[6rem] font-black leading-none hover:rotate-[-15deg] hover:scale-115 transition-all duration-300">
           *
         </span>
       </div>

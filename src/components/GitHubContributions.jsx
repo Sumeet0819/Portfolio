@@ -37,17 +37,17 @@ const GitHubContributions = ({ username = 'Sumeet0819' }) => {
     >
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
-        <div className="mb-8 md:mb-12">
-          <h2 className="text-white text-2xl md:text-3xl font-light tracking-wide mb-2">
+        <div className="mb-6 md:mb-8 lg:mb-12">
+          <h2 className="text-white text-xl md:text-2xl lg:text-3xl font-light tracking-wide mb-2">
             GitHub Activity
           </h2>
-          <p className="text-white/40 text-sm md:text-base font-light">
+          <p className="text-white/40 text-xs md:text-sm lg:text-base font-light">
             My contribution graph for 2026
           </p>
         </div>
 
         {/* GitHub Contribution Graph */}
-        <div className="relative rounded-lg overflow-hidden bg-zinc-900/50 p-6 md:p-8 border border-white/5">
+        <div className="relative rounded-lg overflow-hidden bg-zinc-900/50 p-4 md:p-6 lg:p-8 border border-white/5">
           {/* Graph Container */}
           <div className="w-full overflow-x-auto">
             <img

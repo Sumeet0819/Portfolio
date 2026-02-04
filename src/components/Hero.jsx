@@ -117,7 +117,7 @@ const Hero = () => {
       {/* Hero Content */}
       <div className="flex-1">
         {/* Top Section with Name and Labels */}
-        <div className="flex items-end justify-between mb-32 md:mb-45 lg:mb-50">
+        <div className="flex flex-col md:flex-row items-start md:items-end justify-between mb-16 md:mb-32 lg:mb-45 gap-8 md:gap-0">
           {/* Large Name */}
           <div className="flex-1" ref={nameRef} style={{ perspective: '1000px' }}>
             <h1 
@@ -135,17 +135,17 @@ const Hero = () => {
           </div>
 
           {/* Right Side Info */}
-          <div className="flex flex-row items-end justify-end gap-4 text-right" ref={infoRef}>
+          <div className="flex flex-col sm:flex-row items-start sm:items-end justify-start sm:justify-end gap-4 text-left sm:text-right w-full md:w-auto" ref={infoRef}>
             {/* Role */}
             <div 
-              className="text-white/60 font-light tracking-[0.3em] uppercase"
-              style={{ fontSize: 'clamp(0.6rem, calc((0.7 - (0.6 - 0.7) / (90 - 20) * 20) * 1rem + (0.6 - 0.7) / (90 - 20) * 100vw), 0.7rem)' }}
+              className="text-white/60 font-light tracking-[0.2em] sm:tracking-[0.3em] uppercase"
+              style={{ fontSize: 'clamp(0.55rem, calc((0.7 - (0.6 - 0.7) / (90 - 20) * 20) * 1rem + (0.6 - 0.7) / (90 - 20) * 100vw), 0.7rem)' }}
             >
                <span className='text-red-500'>[ </span><MatrixText>Frontend Developer</MatrixText> <span className='text-red-500'>]</span>
             </div>
             
             {/* Time & Timezone */}
-            <div className="flex flex-col items-end gap-1">
+            <div className="flex flex-col items-start sm:items-end gap-1">
               <div 
                 className="text-white font-light tracking-wider"
                 style={{ fontSize: 'clamp(0.6rem, calc((0.7 - (0.6 - 0.7) / (90 - 20) * 20) * 1rem + (0.6 - 0.7) / (90 - 20) * 100vw), 0.7rem)' }}

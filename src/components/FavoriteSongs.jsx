@@ -42,8 +42,8 @@ const SongCard = ({ song, isActive, onClick, position, distanceFromCenter }) => 
       style={{
         transformStyle: 'preserve-3d',
         transform: transformData.transform,
-        width: '270px',
-        height: '400px',
+        width: '220px',
+        height: '330px',
         backgroundColor: song.bgColor || '#f5f5dc',
         opacity: isActive ? 1 : 0.7,
         zIndex: isActive ? 50 : 10 - Math.abs(distanceFromCenter)
@@ -190,8 +190,8 @@ const FavoriteSongs = () => {
     >
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
-        <div className="mb-12 md:mb-16 text-center">
-          <h2 className="text-white/90 text-3xl md:text-4xl font-light tracking-wide mb-3" 
+        <div className="mb-8 md:mb-12 lg:mb-16 text-center">
+          <h2 className="text-white/90 text-2xl md:text-3xl lg:text-4xl font-light tracking-wide mb-3" 
             style={{ fontFamily: 'Georgia, serif' }}>
             Current Playlist
           </h2>
@@ -205,9 +205,9 @@ const FavoriteSongs = () => {
           {/* Left Arrow */}
           <button
             onClick={handlePrev}
-            className="absolute left-4 top-1/2 -translate-y-1/2 z-[60] w-14 h-14 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center hover:bg-white/20 transition-all duration-300 group"
+            className="absolute left-1 md:left-4 top-1/2 -translate-y-1/2 z-[60] w-10 h-10 md:w-12 lg:w-14 md:h-12 lg:h-14 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center hover:bg-white/20 transition-all duration-300 group"
           >
-            <svg className="w-6 h-6 text-white group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-5 h-5 md:w-6 md:h-6 text-white group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
             </svg>
           </button>
@@ -215,9 +215,9 @@ const FavoriteSongs = () => {
           {/* Right Arrow */}
           <button
             onClick={handleNext}
-            className="absolute right-4 top-1/2 -translate-y-1/2 z-[60] w-14 h-14 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center hover:bg-white/20 transition-all duration-300 group"
+            className="absolute right-1 md:right-4 top-1/2 -translate-y-1/2 z-[60] w-10 h-10 md:w-12 lg:w-14 md:h-12 lg:h-14 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center hover:bg-white/20 transition-all duration-300 group"
           >
-            <svg className="w-6 h-6 text-white group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-5 h-5 md:w-6 md:h-6 text-white group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
             </svg>
           </button>
@@ -226,7 +226,7 @@ const FavoriteSongs = () => {
           <div 
             className="relative w-full overflow-hidden"
             style={{ 
-              height: '500px',
+              height: '380px',
               perspective: '1200px',
               perspectiveOrigin: 'center 45%'
             }}

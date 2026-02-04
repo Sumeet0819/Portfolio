@@ -92,8 +92,8 @@ const EducationTimeline = () => {
     <div ref={containerRef} className="w-full py-24 relative overflow-hidden" style={{ backgroundColor: '#0A0A0A' }}>
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         {/* Header */}
-        <div className="education-header mb-16 md:mb-24">
-          <h2 className="text-white text-3xl md:text-5xl font-light tracking-tight mb-4">
+        <div className="education-header mb-12 md:mb-16 lg:mb-24">
+          <h2 className="text-white text-2xl md:text-4xl lg:text-5xl font-light tracking-tight mb-4">
             Education
           </h2>
           <div className="h-1 w-20 bg-white/20 rounded-full" />
@@ -133,7 +133,7 @@ const EducationTimeline = () => {
                     <div className="absolute -inset-4 bg-gradient-to-r from-white/5 to-white/0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl" />
                     
                     {/* Card Content */}
-                    <div className="relative p-6 rounded-xl bg-zinc-900/30 border border-white/5 hover:border-white/10 transition-colors duration-300">
+                    <div className="relative p-4 md:p-6 rounded-xl bg-zinc-900/30 border border-white/5 hover:border-white/10 transition-colors duration-300">
                       <span className="text-white/40 text-sm font-mono tracking-wider">
                         {item.year}
                       </span>

@@ -2,45 +2,43 @@ import React, { useRef, useState } from 'react'
 import { useGSAP } from '@gsap/react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { 
+  RiJavascriptFill, 
+  RiReactjsFill, 
+  RiNodejsFill, 
+  RiHtml5Fill, 
+  RiCss3Fill, 
+  RiTailwindCssFill,
+  RiGitBranchFill,
+  RiDatabase2Fill,
+  RiTerminalBoxFill
+} from 'react-icons/ri'
+import { 
+  SiTypescript, 
+  SiPython, 
+  SiMongodb, 
+  SiPostgresql, 
+  SiRedux, 
+  SiOdoo 
+} from 'react-icons/si'
 
 gsap.registerPlugin(ScrollTrigger)
 
-// --- Icons (Simple Paths) ---
-const getIcon = (name) => {
-  switch (name) {
-    case 'JavaScript': return <path d="M10.5 4h3c2.5 0 4.5 2 4.5 4.5v7c0 2.5-2 4.5-4.5 4.5h-3c-2.5 0-4.5-2-4.5-4.5v-7C6 6 8 4 10.5 4z M13 14h-2v2h2v-2z" />;
-    case 'TypeScript': return <path d="M4 4h16v16H4V4z M14 14h-2v2h2v-2z" />; 
-    case 'React': return <g fill="none" stroke="currentColor" strokeWidth="1.5"><circle cx="12" cy="12" r="2.5"/><path d="M12 21.5c4.1 0 7.5-3.5 8.5-6.5C21.5 12 18 8.5 12 8.5S2.5 12 2.5 15c1 3 4.4 6.5 8.5 6.5z" transform="rotate(60 12 12)"/><path d="M12 2.5c-4.1 0-7.5 3.5-8.5 6.5C2.5 12 6 15.5 12 15.5s9.5-3.5 9.5-6.5c-1-3-4.4-6.5-8.5-6.5z" transform="rotate(60 12 12)"/></g>;
-    case 'Node.js': return <path d="M12 2L4 7v10l8 5 8-5V7l-8-5zm0 2l6 3.5v7L12 18l-6-3.5v-7L12 4z" />;
-    case 'HTML5': return <path d="M4 2l2 18 6 2 6-2 2-18H4zm12 16l-4 1.5L8 18l-1-11h10l-1 11z" />;
-    case 'CSS3': return <path d="M4 2l2 18 6 2 6-2 2-18H4zm12 16l-4 1.5L8 18l-1-11h10l-1 11z" />;
-    case 'Tailwind CSS': return <path d="M6 12c0-3 2-5 5-5s5 2 5 5-2 5-5 5-5-2-5-5zm1 0c0 2 1.5 3 4 3s4-1 4-3-1.5-3-4-3-4 1-4 3z" />;
-    case 'Python': return <path d="M12 2c-3 0-5 2-5 5v2h2V7c0-2 1.5-3 3-3s3 1 3 3v2h2V7c0-3-2-5-5-5zM7 12v2c0 3 2 5 5 5s5-2 5-5v-2h-2v2c0 2-1.5 3-3 3s-3-1-3-3v-2H7z" />;
-    case 'MongoDB': return <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z M12 6v12" />; 
-    case 'PostgreSQL': return <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14h2v-4h-2v4zm0-6h2V8h-2v2z" />; 
-    case 'Git': return <path d="M12 2L2 12l10 10 10-10L12 2zm0 3.5L18.5 12 12 18.5 5.5 12 12 5.5z M12 8a2 2 0 100 4 2 2 0 000-4z" />;
-    case 'Redux': return <path d="M12 2a10 10 0 100 20 10 10 0 000-20zm0 16a6 6 0 110-12 6 6 0 010 12z" />;
-    case 'Linux': return <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm0 16c-3.3 0-6-2.7-6-6s2.7-6 6-6 6 2.7 6 6-2.7 6-6 6z" />;
-    case 'Odoo': return <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 14c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4z" />; // Simplified 'O'
-    default: return <circle cx="12" cy="12" r="8" />;
-  }
-}
-
 const TECH_SKILLS = [
-  { name: 'JavaScript', color: '#F7DF1E' },
-  { name: 'TypeScript', color: '#3178C6' },
-  { name: 'React', color: '#61DAFB' },
-  { name: 'Node.js', color: '#339933' },
-  { name: 'HTML5', color: '#E34F26' },
-  { name: 'CSS3', color: '#1572B6' },
-  { name: 'Tailwind CSS', color: '#06B6D4' },
-  { name: 'Python', color: '#3776AB' },
-  { name: 'MongoDB', color: '#47A248' },
-  { name: 'PostgreSQL', color: '#4169E1' },
-  { name: 'Git', color: '#F05032' },
-  { name: 'Redux', color: '#764ABC' },
-  { name: 'Linux', color: '#FCC624' },
-  { name: 'Odoo', color: '#7C70FF' },
+  { name: 'JavaScript', color: '#F7DF1E', icon: RiJavascriptFill },
+  { name: 'TypeScript', color: '#3178C6', icon: SiTypescript },
+  { name: 'React', color: '#61DAFB', icon: RiReactjsFill },
+  { name: 'Node.js', color: '#339933', icon: RiNodejsFill },
+  { name: 'HTML5', color: '#E34F26', icon: RiHtml5Fill },
+  { name: 'CSS3', color: '#1572B6', icon: RiCss3Fill },
+  { name: 'Tailwind CSS', color: '#06B6D4', icon: RiTailwindCssFill },
+  { name: 'Python', color: '#3776AB', icon: SiPython },
+  { name: 'MongoDB', color: '#47A248', icon: SiMongodb },
+  { name: 'PostgreSQL', color: '#4169E1', icon: SiPostgresql },
+  { name: 'Git', color: '#F05032', icon: RiGitBranchFill },
+  { name: 'Redux', color: '#764ABC', icon: SiRedux },
+  { name: 'Linux', color: '#FCC624', icon: RiTerminalBoxFill },
+  { name: 'Odoo', color: '#7C70FF', icon: SiOdoo },
 ]
 
 const TechStack = () => {
@@ -81,33 +79,23 @@ const TechStack = () => {
        }
     )
 
-    // Background Gradient Pulse
-    gsap.to('.tech-bg-gradient', {
-      opacity: 0.6,
-      scale: 1.2,
-      duration: 4,
-      repeat: -1,
-      yoyo: true,
-      ease: 'sine.inOut'
-    })
-
   }, { scope: containerRef })
 
   return (
-    <div ref={containerRef} className="w-full py-32 relative overflow-hidden" style={{ backgroundColor: '#0A0A0A' }}>
-      {/* Dynamic Background */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="tech-bg-gradient absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gray-700/10 rounded-full blur-[100px]" />
-      </div>
-
-      <div className="max-w-7xl mx-auto px-6 md:px-12 mb-20 relative z-10 text-center">
-        <h2 className="tech-header-text text-white text-4xl md:text-6xl font-light tracking-tighter mb-6">
-          <span className="block text-white/40 text-lg md:text-xl font-normal tracking-widest uppercase mb-4">Innovation & Code</span>
-          My Arsenal
+    <div ref={containerRef} className="w-full py-24 md:py-32 lg:py-40 relative overflow-hidden" style={{ backgroundColor: '#0A0A0A' }}>
+      <div className="max-w-7xl mx-auto px-6 md:px-12 mb-16 md:mb-20 lg:mb-24 relative z-10 text-center">
+        <h2 className="tech-header-text text-white text-3xl md:text-5xl lg:text-6xl font-light tracking-tight mb-4">
+          <span className="block text-white/50 text-sm md:text-base lg:text-lg font-medium tracking-[0.3em] uppercase mb-3 md:mb-4">Tech Stack</span>
+          <span className="bg-gradient-to-r from-white via-white to-white/80 bg-clip-text text-transparent">
+            Tools I Master
+          </span>
         </h2>
+        <p className="text-white/40 text-sm md:text-base max-w-2xl mx-auto mt-4">
+          A curated collection of technologies I use to build exceptional digital experiences
+        </p>
       </div>
 
-      <div className="space-y-12 relative z-10 -rotate-2">
+      <div className="space-y-8 md:space-y-12 relative z-10">
          {/* Row 1 - Left to Right */}
          <div className="marquee-row-left">
             <MarqueeRow skills={row1} speed={40} direction="left" />
@@ -150,24 +138,6 @@ const MarqueeRow = ({ skills, speed, direction }) => {
       }
     )
 
-    // Scroll Velocity Effect: Speed up on scroll
-    ScrollTrigger.create({
-      trigger: document.body,
-      onUpdate: (self) => {
-         if (!tweenRef.current) return;
-         // Calculate velocity factor (1 = normal, higher = faster)
-         const velocity = Math.abs(self.getVelocity())
-         const timeScale = 1 + (velocity / 2000) // gentle speed up
-         
-         // Only apply if not hovered
-         if (!isHovered) {
-            gsap.to(tweenRef.current, { timeScale: timeScale, duration: 0.1, overwrite: true })
-            // Return to normal speed after scroll stops
-            gsap.to(tweenRef.current, { timeScale: 1, duration: 0.5, delay: 0.1 })
-         }
-      }
-    })
-
     return () => {
       tweenRef.current?.kill()
     }
@@ -185,17 +155,16 @@ const MarqueeRow = ({ skills, speed, direction }) => {
 
   return (
     <div 
-      className="relative w-full overflow-hidden" 
+      className="relative w-full overflow-hidden py-4" 
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
       <div 
         ref={rowRef}
-        className="flex w-max"
+        className="flex w-max py-2"
       >
-        {/* Render 8 sets to ensure seamless infinite loop for small lists */}
         {[...Array(8)].map((_, i) => (
-          <div key={i} className="content flex px-4">
+          <div key={i} className="content flex px-2 md:px-4">
             {skills.map((skill, idx) => (
               <SkillItem key={`${i}-${idx}`} skill={skill} />
             ))}
@@ -203,35 +172,33 @@ const MarqueeRow = ({ skills, speed, direction }) => {
         ))}
       </div>
       
-       {/* Fade Edges */}
-       <div className="absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-[#0A0A0A] to-transparent z-10 pointer-events-none" />
-       <div className="absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-[#0A0A0A] to-transparent z-10 pointer-events-none" />
+       {/* Enhanced Fade Edges with Gradient */}
+       <div className="absolute inset-y-0 left-0 w-32 md:w-48 bg-gradient-to-r from-[#0A0A0A] via-[#0A0A0A]/80 to-transparent z-10 pointer-events-none" />
+       <div className="absolute inset-y-0 right-0 w-32 md:w-48 bg-gradient-to-l from-[#0A0A0A] via-[#0A0A0A]/80 to-transparent z-10 pointer-events-none" />
     </div>
   )
 }
 
-const SkillItem = ({ skill }) => (
-  <div className="group relative mx-3 md:mx-6">
-    <div 
-      className="relative px-8 py-4 bg-[#111] border border-white/10 rounded-2xl flex items-center gap-4 transition-all duration-300 group-hover:border-white/30 group-hover:-translate-y-1 group-hover:shadow-[0_10px_30px_-10px_rgba(255,255,255,0.1)]"
-    >
-       {/* Icon */}
-       <div className="w-8 h-8 flex items-center justify-center">
-         <svg 
-           viewBox="0 0 24 24" 
-           fill="currentColor" 
-           className="w-full h-full transition-colors duration-300"
+const SkillItem = ({ skill }) => {
+  const Icon = skill.icon
+  
+  return (
+    <div className="group relative mx-2 md:mx-3 lg:mx-4">
+      <div 
+        className="relative px-4 py-2.5 md:px-5 lg:px-6 md:py-3 lg:py-3.5 backdrop-blur-xl bg-white/5 border border-white/10 rounded-2xl flex items-center gap-2.5 md:gap-3 lg:gap-4 transition-all duration-300 ease-out group-hover:border-white/30 group-hover:-translate-y-1 group-hover:bg-white/10"
+      >
+         {/* Icon */}
+         <Icon 
+           className="w-5 h-5 md:w-6 lg:w-7 md:h-6 lg:h-7 transition-all duration-300 ease-out" 
            style={{ color: skill.color }}
-         >
-           {getIcon(skill.name)}
-         </svg>
-       </div>
-       
-       <span className="text-xl text-zinc-400 font-light tracking-wide group-hover:text-white transition-colors">
-         {skill.name}
-       </span>
+         />
+         
+         <span className="text-sm md:text-base lg:text-lg text-white/70 font-medium tracking-wide group-hover:text-white transition-all duration-300 ease-out">
+           {skill.name}
+         </span>
+      </div>
     </div>
-  </div>
-)
+  )
+}
 
 export default TechStack

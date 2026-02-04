@@ -57,7 +57,7 @@ const CinematicLoader = ({ onComplete }) => {
       {/* Left Door */}
       <div
         ref={leftDoorRef}
-        className="absolute top-0 left-0 w-1/2 h-full bg-black flex items-center justify-end pr-12"
+        className="absolute top-0 left-0 w-1/2 h-full bg-black flex items-center justify-end pr-4 md:pr-8 lg:pr-12"
         style={{ 
           transformOrigin: 'left center',
           transformStyle: 'preserve-3d',
@@ -65,7 +65,7 @@ const CinematicLoader = ({ onComplete }) => {
         }}
       >
         {/* Logo/text on left door */}
-        <div className="text-white text-3xl md:text-5xl lg:text-6xl font-extralight tracking-[0.4em] uppercase opacity-40">
+        <div className="text-white text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-extralight tracking-[0.2em] sm:tracking-[0.3em] md:tracking-[0.4em] uppercase opacity-40">
           SUMEET
         </div>
       </div>
@@ -73,7 +73,7 @@ const CinematicLoader = ({ onComplete }) => {
       {/* Right Door */}
       <div
         ref={rightDoorRef}
-        className="absolute top-0 right-0 w-1/2 h-full bg-black flex items-center justify-start pl-12"
+        className="absolute top-0 right-0 w-1/2 h-full bg-black flex items-center justify-start pl-4 md:pl-8 lg:pl-12"
         style={{ 
           transformOrigin: 'right center',
           transformStyle: 'preserve-3d',
@@ -81,7 +81,7 @@ const CinematicLoader = ({ onComplete }) => {
         }}
       >
         {/* Logo/text on right door */}
-        <div className="text-white text-3xl md:text-5xl lg:text-6xl font-extralight tracking-[0.4em] uppercase opacity-40">
+        <div className="text-white text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-extralight tracking-[0.2em] sm:tracking-[0.3em] md:tracking-[0.4em] uppercase opacity-40">
           TOKARE
         </div>
       </div>
