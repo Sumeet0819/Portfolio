@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react'
 import { useGSAP } from '@gsap/react'
 import gsap from 'gsap'
 import ProjectCard from './ProjectCard'
+import MatrixText from './MatrixText'
 
 const Hero = () => {
   const [hoveredCard, setHoveredCard] = useState(null)
@@ -123,8 +124,13 @@ const Hero = () => {
               className="font-regular leading-[0.85] tracking-tight overflow-hidden"
               style={{ fontSize: 'clamp(3.5rem, 12vw, 9rem)' }}
             >
-              <span className="word inline-block">SUMEET</span><br />
-              <span className="word inline-block">TOKARE</span>
+              <div className="word inline-block">
+                <MatrixText>SUMEET</MatrixText>
+              </div>
+              <br />
+              <div className="word inline-block">
+                <MatrixText>TOKARE</MatrixText>
+              </div>
             </h1>
           </div>
 
@@ -135,7 +141,7 @@ const Hero = () => {
               className="text-white/60 font-light tracking-[0.3em] uppercase"
               style={{ fontSize: 'clamp(0.6rem, calc((0.7 - (0.6 - 0.7) / (90 - 20) * 20) * 1rem + (0.6 - 0.7) / (90 - 20) * 100vw), 0.7rem)' }}
             >
-               <span className='text-red-500'>[ </span>Frontend Developer <span className='text-red-500'>]</span>
+               <span className='text-red-500'>[ </span><MatrixText>Frontend Developer</MatrixText> <span className='text-red-500'>]</span>
             </div>
             
             {/* Time & Timezone */}
