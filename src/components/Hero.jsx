@@ -113,16 +113,16 @@ const Hero = () => {
   ]
 
   return (
-    <div className="min-h-screen text-white pt-32 pb-16 px-6 md:px-12" style={{ backgroundColor: '#0A0A0A' }}>
+    <div className="min-h-screen text-white pt-35 pb-16 px-6 md:px-12" style={{ backgroundColor: '#0A0A0A' }}>
       {/* Hero Content */}
       <div className="flex-1">
         {/* Top Section with Name and Labels */}
-        <div className="flex flex-col md:flex-row items-start md:items-end justify-between mb-16 md:mb-32 lg:mb-45 gap-8 md:gap-0">
+        <div className="flex flex-col md:flex-row items-start md:items-end justify-between mb-16 md:mb-45 lg:mb-55 gap-8 md:gap-0">
           {/* Large Name */}
           <div className="flex-1" ref={nameRef} style={{ perspective: '1000px' }}>
             <h1 
               className="font-regular leading-[0.85] tracking-tight overflow-hidden"
-              style={{ fontSize: 'clamp(3.5rem, 12vw, 9rem)' }}
+              style={{ fontSize: 'clamp(3.5rem, 12vw, 14rem)' }}
             >
               <div className="word inline-block">
                 <MatrixText>SUMEET</MatrixText>

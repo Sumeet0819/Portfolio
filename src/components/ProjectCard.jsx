@@ -31,7 +31,7 @@ const ProjectCard = ({ project, isHovered, isOtherHovered, onHover, onLeave }) =
   return (
     <div
       ref={cardRef}
-      className="group relative h-50 md:h-50 lg:h-50 rounded-sm overflow-hidden cursor-pointer bg-zinc-900"
+      className="group relative h-80 md:h-60 lg:h-60 rounded-sm overflow-hidden cursor-pointer bg-zinc-900"
       onMouseEnter={onHover}
       onMouseLeave={onLeave}
     >
