@@ -1,15 +1,12 @@
-import React, { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { useGSAP } from '@gsap/react'
 import gsap from 'gsap'
-import ProjectCard from './ProjectCard'
 import MatrixText from './MatrixText'
 
 const Hero = () => {
-  const [hoveredCard, setHoveredCard] = useState(null)
   const [currentTime, setCurrentTime] = useState('')
   const nameRef = useRef(null)
   const infoRef = useRef(null)
-  const gridRef = useRef(null)
 
   // Update time every second
   useEffect(() => {
@@ -32,7 +29,6 @@ const Hero = () => {
   // Entrance animations - timeline
   useGSAP(() => {
     const words = nameRef.current.querySelectorAll('.word')
-    const projectCards = gridRef.current.children
     
     // Set initial states - hide everything
     gsap.set(words, {
@@ -44,21 +40,6 @@ const Hero = () => {
       opacity: 0,
       y: 60
     })
-
-    gsap.fromTo(projectCards, 
-      {
-        opacity: 0,
-        y: 400
-      },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 1,
-        delay: 1.5,
-        stagger: 0.2,
-        ease: 'power3.out'
-      }
-    )
     
     const tl = gsap.timeline({ defaults: { ease: 'power3.out' } })
     
@@ -79,45 +60,27 @@ const Hero = () => {
     }, '-=0.4')
   }, [])
 
-  const projects = [
-    {
-      id: 1,
-      title: 'V4',
-      image: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=400&h=300&fit=crop',
-      category: 'Branding'
-    },
-    {
-      id: 2,
-      title: 'Live Longer, Better',
-      image: 'https://images.unsplash.com/photo-1618556450994-a6a128ef0d9d?w=400&h=300&fit=crop',
-      category: 'Web Design'
-    },
-    {
-      id: 3,
-      title: 'ATLAS',
-      image: 'https://images.unsplash.com/photo-1618556450991-2f1af64e8191?w=400&h=300&fit=crop',
-      category: 'Product Design'
-    },
-    {
-      id: 4,
-      title: 'Portfolio',
-      image: 'https://images.unsplash.com/photo-1618556450783-a4f8e6b0c3f1?w=400&h=300&fit=crop',
-      category: 'Development'
-    },
-    {
-      id: 5,
-      title: 'Live Performance',
-      image: 'https://images.unsplash.com/photo-1540039155733-5bb30b53aa14?w=400&h=300&fit=crop',
-      category: 'Photography'
-    }
-  ]
-
   return (
-    <div className="min-h-screen text-white pt-35 pb-16 px-6 md:px-12" style={{ backgroundColor: '#0A0A0A' }}>
+    <div className="relative min-h-screen text-white pt-35 pb-16 px-6 md:px-12 overflow-hidden flex flex-col justify-end md:justify-center">
+      
+      {/* Background Video */}
+      <video 
+        autoPlay 
+        loop 
+        muted 
+        playsInline 
+        className="absolute top-0 left-0 w-full h-full object-cover z-0 opacity-80 scale-150 header-video"
+      >
+        <source src="/hero.mp4" type="video/mp4" />
+      </video>
+      
+      {/* Optional Overlay if video is too bright, or to blend with theme */}
+      <div className="absolute top-0 left-0 w-full h-full bg-[#0A0A0A]/50 z-0"></div>
+
       {/* Hero Content */}
-      <div className="flex-1">
+      <div className="relative z-10 w-full">
         {/* Top Section with Name and Labels */}
-        <div className="flex flex-col md:flex-row items-start md:items-end justify-between mb-16 md:mb-45 lg:mb-55 gap-8 md:gap-0">
+        <div className="flex flex-col md:flex-row items-start md:items-end justify-between gap-8 md:gap-0">
           {/* Large Name */}
           <div className="flex-1" ref={nameRef} style={{ perspective: '1000px' }}>
             <h1 
@@ -161,26 +124,7 @@ const Hero = () => {
             </div>
           </div>
         </div>
-
-        {/* Project Showcase Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-5 overflow-hidden" ref={gridRef}>
-          {projects.map((project) => (
-            <ProjectCard 
-              key={project.id} 
-              project={project}
-              isHovered={hoveredCard === project.id}
-              isOtherHovered={hoveredCard !== null && hoveredCard !== project.id}
-              onHover={() => setHoveredCard(project.id)}
-              onLeave={() => setHoveredCard(null)}
-            />
-          ))}
-        </div>
       </div>
-
-      {/* Scroll Indicator */}
-      {/* <div className="absolute bottom-5 left-1/2 -translate-x-1/2 animate-bounce">
-        <div className="w-[1px] h-12 bg-gradient-to-b from-white/40 to-transparent"></div>
-      </div> */}
     </div>
   )
 }
