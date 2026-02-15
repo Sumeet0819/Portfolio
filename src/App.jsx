@@ -3,6 +3,7 @@ import Lenis from 'lenis'
 import NavBar from './components/NavBar'
 import MainRoutes from './routes/MainRoutes'
 import CinematicLoader from './components/CinematicLoader'
+import CustomCursor from './components/CustomCursor'
 
 const App = () => {
   const [isLoading, setIsLoading] = useState(true)
@@ -55,7 +56,12 @@ const App = () => {
       />
       
       {/* Only render NavBar after loading completes */}
-      {!isLoading && <NavBar />}
+      {!isLoading && (
+        <>
+            <NavBar />
+            <CustomCursor />
+        </>
+      )}
       <MainRoutes />
     </div>
   )

@@ -61,7 +61,7 @@ const Hero = () => {
   }, [])
 
   return (
-    <div className="relative min-h-screen text-white pt-35 pb-16 px-6 md:px-12 overflow-hidden flex flex-col justify-end md:justify-center">
+    <div className="relative min-h-screen text-white pt-35 pb-12 md:pb-24 px-6 md:px-12 overflow-hidden flex flex-col justify-end">
       
       {/* Background Video */}
       <video 

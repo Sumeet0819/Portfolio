@@ -50,8 +50,8 @@ const EducationTimeline = () => {
   const progressBarRef = useRef(null)
   const yearRef = useRef(null)
   
-  // Initial Year
-  const [activeYear, setActiveYear] = useState(EDUCATION_DATA[0].year.split(' - ')[0])
+  // Initial Year - Null to hide on first slide
+  const [activeYear, setActiveYear] = useState('')
 
   useGSAP(() => {
     const track = trackRef.current
@@ -64,37 +64,42 @@ const EducationTimeline = () => {
 
     // Main Horizontal Scroll
     const tween = gsap.to(track, {
-      x: getScrollAmount,
+      x: () => -(track.scrollWidth - window.innerWidth),
       ease: "none",
       scrollTrigger: {
         trigger: container,
         start: "top top",
         end: `+=${track.scrollWidth - window.innerWidth}`,
         pin: true,
+        anticipatePin: 1, // Smooths out pinning
         scrub: 1,
         invalidateOnRefresh: true,
-        onUpdate: (self) => {
-            // Update Progress Bar
-            if (progressBarRef.current) {
-                gsap.set(progressBarRef.current, { scaleX: self.progress })
-            }
-        }
       }
     })
-    
-    // Year Updates & Card Animations
+
+    // Update active year based on visible card
     const cards = gsap.utils.toArray('.edu-card')
     cards.forEach((card, index) => {
-        ScrollTrigger.create({
-            trigger: card,
-            containerAnimation: tween,
-            start: "left center",
-            end: "right center",
-            onEnter: () => setActiveYear(EDUCATION_DATA[index].year.split(' - ')[0]),
-            onEnterBack: () => setActiveYear(EDUCATION_DATA[index].year.split(' - ')[0]),
-        })
+      ScrollTrigger.create({
+        trigger: card,
+        containerAnimation: tween,
+        start: "left center",
+        end: "right center",
+        onEnter: () => setActiveYear(EDUCATION_DATA[index].year.split(' - ')[0]),
+        onEnterBack: () => setActiveYear(EDUCATION_DATA[index].year.split(' - ')[0]),
+      })
     })
 
+    // Clear year when scrolling back to intro
+    ScrollTrigger.create({
+        trigger: track.querySelector('.intro-section'), // We need to add this class
+        containerAnimation: tween,
+        start: "left center",
+        end: "right center",
+        onEnter: () => setActiveYear(''),
+        onEnterBack: () => setActiveYear('')
+    })
+    
   }, { scope: containerRef })
 
   return (
@@ -118,7 +123,7 @@ const EducationTimeline = () => {
         <div ref={trackRef} className="flex h-full w-fit">
             
             {/* Intro Section */}
-             <div className="w-[100vw] h-full flex items-center justify-center px-4 md:px-12 flex-shrink-0 z-10 relative">
+             <div className="intro-section w-[100vw] h-full flex items-center justify-center px-4 md:px-12 flex-shrink-0 z-10 relative">
                  <div className="w-full max-w-7xl grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
                     
                     {/* Left: Text Content */}

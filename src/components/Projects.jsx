@@ -12,38 +12,38 @@ const Projects = () => {
   const projects = [
     {
       id: 1,
-      title: 'V4',
-      category: 'Branding',
-      year: '2023',
-      location: 'Mumbai, IN'
+      title: 'EMS',
+      category: 'Management System',
+      year: '2026',
+      location: 'Ahmedabad, IN'
     },
     {
       id: 2,
-      title: 'Live Longer, Better',
+      title: 'Moody Player',
       category: 'Web Design',
-      year: '2024',
-      location: 'New York, US'
+      year: '2026',
+      location: 'Ahmedabad, IN'
     },
     {
       id: 3,
-      title: 'ATLAS',
-      category: 'Product Design',
+      title: 'Mocktails',
+      category: 'Web Design',
       year: '2023',
-      location: 'London, UK'
+      location: 'Ahmedabad, IN'
     },
     {
       id: 4,
-      title: 'Portfolio',
+      title: 'Remi8',
       category: 'Development',
       year: '2024',
-      location: 'Remote'
+      location: 'Ahmedabad, IN'
     },
     {
       id: 5,
-      title: 'Live Performance',
-      category: 'Photography',
+      title: 'Bleep',
+      category: 'Development',
       year: '2022',
-      location: 'Bangalore, IN'
+      location: 'Ahmedabad, IN'
     }
   ]
 

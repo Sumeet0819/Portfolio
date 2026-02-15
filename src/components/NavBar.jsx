@@ -118,20 +118,6 @@ const NavBar = () => {
             >
               <span className="relative z-10">About</span>
             </Link>
-            <a 
-              href="#feed" 
-              className="hidden sm:inline-flex nav-item relative text-white font-light tracking-[0.1em] md:tracking-[0.15em] uppercase group px-3 md:px-4 py-2 hover:backdrop-blur-md hover:bg-white/5 hover:border-white/10 transition-all duration-500 border border-transparent rounded-full"
-              style={{ fontSize: 'clamp(0.55rem, calc((0.7 - (0.6 - 0.7) / (90 - 20) * 20) * 1rem + (0.6 - 0.7) / (90 - 20) * 100vw), 0.7rem)' }}
-            >
-              <span className="relative z-10">Feed</span>
-            </a>
-            <a 
-              href="#archive" 
-              className="hidden sm:inline-flex nav-item relative text-white font-light tracking-[0.1em] md:tracking-[0.15em] uppercase group px-3 md:px-4 py-2 hover:backdrop-blur-md hover:bg-white/5 hover:border-white/10 transition-all duration-500 border border-transparent rounded-full"
-              style={{ fontSize: 'clamp(0.55rem, calc((0.7 - (0.6 - 0.7) / (90 - 20) * 20) * 1rem + (0.6 - 0.7) / (90 - 20) * 100vw), 0.7rem)' }}
-            >
-              <span className="relative z-10">Archive</span>
-            </a>
           </div>
         </div>
       </div>
