@@ -85,7 +85,7 @@ const Hero = () => {
           <div className="flex-1" ref={nameRef} style={{ perspective: '1000px' }}>
             <h1 
               className="font-regular leading-[0.85] tracking-tight overflow-hidden"
-              style={{ fontSize: 'clamp(3.5rem, 12vw, 14rem)' }}
+              style={{ fontSize: 'clamp(2.5rem, 14vw, 14rem)' }}
             >
               <div className="word inline-block">
                 <MatrixText>SUMEET</MatrixText>

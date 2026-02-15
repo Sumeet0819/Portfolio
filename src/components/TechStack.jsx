@@ -134,7 +134,7 @@ const TechStack = () => {
 
 const TechNode = ({ node }) => {
   return (
-    <div className="tech-node group relative border-r border-b border-black/10 dark:border-white/10 p-6 md:p-8 hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-colors duration-300 cursor-pointer">
+    <div className="tech-node group relative border-r border-b border-black/10 dark:border-white/10 p-4 md:p-8 hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-colors duration-300 cursor-pointer">
       <div className="flex flex-col h-full justify-between gap-4">
         
         {/* Top Label */}
@@ -144,7 +144,7 @@ const TechNode = ({ node }) => {
         
         {/* Main Text */}
         <div className="relative">
-          <h3 className="text-lg md:text-xl font-bold tracking-tight group-hover:scale-105 transition-transform duration-300 origin-left">
+          <h3 className="text-base md:text-xl font-bold tracking-tight group-hover:scale-105 transition-transform duration-300 origin-left break-all">
             {node.name}
           </h3>
           
