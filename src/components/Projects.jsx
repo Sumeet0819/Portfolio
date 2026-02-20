@@ -22,21 +22,24 @@ const Projects = () => {
       title: 'Moody Player',
       category: 'Web Design',
       year: '2026',
-      location: 'Ahmedabad, IN'
+      location: 'Ahmedabad, IN',
+      link: 'https://moody-nu-nine.vercel.app/'
     },
     {
       id: 3,
       title: 'Mocktails',
       category: 'Web Design',
       year: '2023',
-      location: 'Ahmedabad, IN'
+      location: 'Ahmedabad, IN',
+      link: 'https://mocktails-project.vercel.app/'
     },
     {
       id: 4,
       title: 'Remi8',
       category: 'Development',
       year: '2024',
-      location: 'Ahmedabad, IN'
+      location: 'Ahmedabad, IN',
+      link: 'https://play.google.com/store/apps/details?id=com.remi8.ai&hl=en_IN'
     },
     {
       id: 5,
@@ -148,10 +151,12 @@ const Projects = () => {
                         
                         {/* Arrow Icon (Only visible on hover) */}
                         <div className="absolute right-6 top-1/2 -translate-y-1/2 opacity-0 -translate-x-8 group-hover:opacity-100 group-hover:-translate-x-0 transition-all duration-500 ease-[cubic-bezier(0.23,1,0.32,1)] text-white dark:text-black">
-                             <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                                 <a href={project.link} target='_blank'>
+                                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
                                  <line x1="7" y1="17" x2="17" y2="7"></line>
                                  <polyline points="7 7 17 7 17 17"></polyline>
                              </svg>
+                                 </a>
                         </div>
                     </div>
                 </div>
