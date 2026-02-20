@@ -11,17 +11,17 @@ const TECH_NODES = [
   { name: 'PYTHON', type: 'LANGUAGE', status: 'STANDBY' },
   { name: 'NODE.JS', type: 'BACKEND', status: 'RUNNING' },
   { name: 'TAILWIND', type: 'STYLING', status: 'OPTIMIZED' },
-  { name: 'MYSQL', type: 'DATA', status: 'CONNECTED' },
+  { name: 'POSTGRE SQL', type: 'DATA', status: 'CONNECTED' },
   { name: 'HTML5', type: 'CORE', status: 'Standard' },
   { name: 'GIT', type: 'VERSION', status: 'TRACKING' },
-  { name: 'GRAPHQL', type: 'QUERY', status: 'CACHED' },
   { name: 'GITHUB', type: 'OPS', status: 'ONLINE' },
-  { name: 'JAVA', type: 'LANGUAGE', status: 'COMPILED' },
-  { name: 'DJANGO', type: 'FRAMEWORK', status: 'STABLE' },
-  { name: 'PHP', type: 'LANGUAGE', status: 'LEGACY' },
-  { name: 'LARAVEL', type: 'FRAMEWORK', status: 'SECURE' },
   { name: 'THREE.JS', type: '3D', status: 'RENDERED' },
-  { name: 'C++', type: 'LANGUAGE', status: 'NATIVE' },
+  { name: 'GSAP', type: 'ANIMATION', status: 'RUNNING' },
+  { name: 'ODOO', type: 'ERP', status: 'RUNNING' },
+  { name: 'DOCKER', type: 'CONTAINER', status: 'RUNNING' },
+  {name:'MONGO DB', type:'DATABASE', status:'CONNECTED'},
+  {name:'REACT-NATIVE',type:'LIBRARY',status:'ACTIVE'},
+  {name:'CSS3',type:'CORE',status:'STANDARD'}
 ]
 
 const TechStack = () => {
