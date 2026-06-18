@@ -19,11 +19,11 @@ const Projects = () => {
     },
     {
       id: 2,
-      title: 'Moody Player',
-      category: 'Web Design',
+      title: 'Productivity Box',
+      category: 'Productivity',
       year: '2026',
       location: 'Ahmedabad, IN',
-      link: 'https://moody-nu-nine.vercel.app/'
+      link: 'https://productivity-box.vercel.app/'
     },
     {
       id: 3,
@@ -35,18 +35,28 @@ const Projects = () => {
     },
     {
       id: 4,
-      title: 'Remi8',
-      category: 'Development',
-      year: '2024',
+      title: 'Ditto',
+      category: 'Mobile Development',
+      year: '2025',
       location: 'Ahmedabad, IN',
-      link: 'https://play.google.com/store/apps/details?id=com.remi8.ai&hl=en_IN'
+      link: ''
     },
     {
       id: 5,
-      title: 'Bleep',
+      title: 'Cozy Nest',
       category: 'Development',
       year: '2022',
-      location: 'Ahmedabad, IN'
+      location: 'Ahmedabad, IN',
+      link:'https://demo-landing-page-uhub.vercel.app/'
+    }
+    ,
+    {
+      id: 6,
+      title: 'Confex',
+      category: 'Development',
+      year: '2022',
+      location: 'Ahmedabad, IN',
+      link:'https://confex-pearl.vercel.app/'
     }
   ]
 
