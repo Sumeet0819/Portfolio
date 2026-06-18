@@ -5,9 +5,9 @@ export const projects = [
     category: 'Management System',
     year: '2026',
     location: 'Ahmedabad, IN',
-    link: '#',
+    link: 'https://ems-pi-six.vercel.app/',
     services: ['Strategy', 'Design', 'Development'],
-    liveSite: 'https://ems-pi-six.vercel.app/',
+    liveSite: 'EMS.APP /',
     carbonFootprint: '0.12 G/CO2 [B]',
     description: 'An enterprise management system focused on efficiency and real-time operations tracking.',
     images: ["bg-[url('/ems-1.png')]", "bg-[url('/ems-2.png')]", "bg-[url('/ems-3.png')]"]
