@@ -8,12 +8,17 @@ const MatrixText = ({
   glitchDuration = 800
 }) => {
   const [isHovered, setIsHovered] = useState(false);
+  const [isAnimating, setIsAnimating] = useState(true);
   const [displayText, setDisplayText] = useState(children);
   const intervalRef = useRef(null);
   const timeoutRef = useRef(null);
 
   useEffect(() => {
-    if (isHovered) {
+    setIsAnimating(true);
+  }, [children]);
+
+  useEffect(() => {
+    if (isHovered || isAnimating) {
       const originalText = children;
       const textLength = originalText.length;
       let iterations = 0;
@@ -44,12 +49,14 @@ const MatrixText = ({
         if (iterations >= textLength) {
           clearInterval(intervalRef.current);
           setDisplayText(originalText);
+          setIsAnimating(false);
         }
       }, speed);
 
       // Auto-reset after duration
       timeoutRef.current = setTimeout(() => {
         setDisplayText(originalText);
+        setIsAnimating(false);
       }, glitchDuration);
     } else {
       setDisplayText(children);
@@ -59,7 +66,7 @@ const MatrixText = ({
       if (intervalRef.current) clearInterval(intervalRef.current);
       if (timeoutRef.current) clearTimeout(timeoutRef.current);
     };
-  }, [isHovered, children, speed, characters, glitchDuration]);
+  }, [isHovered, isAnimating, children, speed, characters, glitchDuration]);
 
   return (
     <span

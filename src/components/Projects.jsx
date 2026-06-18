@@ -1,64 +1,18 @@
 import React, { useRef } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { useGSAP } from '@gsap/react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { projects } from '../data/projects'
 
 gsap.registerPlugin(ScrollTrigger)
 
 const Projects = () => {
   const containerRef = useRef(null)
   const tableRef = useRef(null)
+  const navigate = useNavigate()
 
-  const projects = [
-    {
-      id: 1,
-      title: 'EMS',
-      category: 'Management System',
-      year: '2026',
-      location: 'Ahmedabad, IN'
-    },
-    {
-      id: 2,
-      title: 'Productivity Box',
-      category: 'Productivity',
-      year: '2026',
-      location: 'Ahmedabad, IN',
-      link: 'https://productivity-box.vercel.app/'
-    },
-    {
-      id: 3,
-      title: 'Mocktails',
-      category: 'Web Design',
-      year: '2023',
-      location: 'Ahmedabad, IN',
-      link: 'https://mocktails-project.vercel.app/'
-    },
-    {
-      id: 4,
-      title: 'Ditto',
-      category: 'Mobile Development',
-      year: '2025',
-      location: 'Ahmedabad, IN',
-      link: ''
-    },
-    {
-      id: 5,
-      title: 'Cozy Nest',
-      category: 'Development',
-      year: '2022',
-      location: 'Ahmedabad, IN',
-      link:'https://demo-landing-page-uhub.vercel.app/'
-    }
-    ,
-    {
-      id: 6,
-      title: 'Confex',
-      category: 'Development',
-      year: '2022',
-      location: 'Ahmedabad, IN',
-      link:'https://confex-pearl.vercel.app/'
-    }
-  ]
+
 
   useGSAP(() => {
     // Header Reveal
@@ -126,6 +80,7 @@ const Projects = () => {
             {projects.map((project) => (
                 <div 
                     key={project.id} 
+                    onClick={() => navigate(`/project/${project.id}`)}
                     className="project-row group relative cursor-pointer"
                 >
                     {/* Border Line */}
@@ -161,12 +116,12 @@ const Projects = () => {
                         
                         {/* Arrow Icon (Only visible on hover) */}
                         <div className="absolute right-6 top-1/2 -translate-y-1/2 opacity-0 -translate-x-8 group-hover:opacity-100 group-hover:-translate-x-0 transition-all duration-500 ease-[cubic-bezier(0.23,1,0.32,1)] text-white dark:text-black">
-                                 <a href={project.link} target='_blank'>
+                                 <div className="cursor-pointer">
                                   <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
                                  <line x1="7" y1="17" x2="17" y2="7"></line>
                                  <polyline points="7 7 17 7 17 17"></polyline>
                              </svg>
-                                 </a>
+                                 </div>
                         </div>
                     </div>
                 </div>
