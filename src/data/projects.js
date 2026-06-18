@@ -7,7 +7,7 @@ export const projects = [
     location: 'Ahmedabad, IN',
     link: '#',
     services: ['Strategy', 'Design', 'Development'],
-    liveSite: 'EMS.APP /',
+    liveSite: 'https://ems-pi-six.vercel.app/',
     carbonFootprint: '0.12 G/CO2 [B]',
     description: 'An enterprise management system focused on efficiency and real-time operations tracking.',
     images: ["bg-[url('/ems-1.png')]", "bg-[url('/ems-2.png')]", "bg-[url('/ems-3.png')]"]
